@@ -74,6 +74,21 @@ window.SITE_CONTENT = {
         { label: "Case study ↗", url: "robotic-arm-case-study.html" }
       ]
     },
+    {
+      title: "Forex Analyst",
+      category: "Web",
+      year: "2026",
+      summary: "Serverless FX research platform that computes live market analytics at the edge and publishes AI-written monthly reports at zero marginal cost.",
+      description: [
+        "ForexAnalyst (forexanalyst.org) publishes institutional-style monthly research for six currency pairs — price action, technical indicators, macro drivers, and a forward outlook — presented with a minimal, Linear-inspired design.",
+        "The entire platform runs on a single Cloudflare Worker: it ingests daily OHLC data from Yahoo Finance, computes RSI, MACD, moving averages, market structure and pivot levels server-side, and renders interactive charts on the client. Monthly research notes are generated once by Claude with web-verified event data, then stored in Cloudflare KV and served as static editions — so visitors read AI research without triggering any per-request inference cost. Edge caching keeps market data fresh while holding third-party API usage near zero.",
+        "The project began as a Streamlit prototype and was re-engineered into a dependency-free vanilla JS frontend with a custom design system, deployed via a GitHub-to-Cloudflare CI pipeline on a custom domain."
+      ],
+      tags: ["JavaScript", "Cloudflare Workers", "KV", "Chart.js", "Claude API", "Serverless"],
+      links: [
+        { label: "Visit forexanalyst.org ↗", url: "https://forexanalyst.org" }
+      ]
+    },
     // 👉 TO ADD A NEW PROJECT: copy the entire { ... } block above (Robotic Arm),
     // paste it here as a new block, and change the text inside the quotes.
     // No coding needed — just copy, paste, and edit. Add a comma after each
