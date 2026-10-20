@@ -47,10 +47,61 @@ window.SITE_CONTENT = {
     tools: ["SOLIDWORKS", "Ansys Benchmark", "MATLAB", "Excel", "Python"]
   },
 
+  /* ============================================================
+     WORK EXPERIENCE  →  used by the site AND by the Jeff AI assistant.
+     Copy a { ... } block to add another role. Put a comma after it.
+     ============================================================ */
+  experience: [
+    {
+      role: "Treasury Intern",
+      org: "CIMB Niaga",
+      type: "Banking / Financial Services",
+      period: "",                    // e.g. "Jun 2025 – Aug 2025"
+      location: "",                  // e.g. "Jakarta, Indonesia"
+      summary: "Internship in treasury operations at CIMB Niaga, learning how a major bank runs financial services and manages its treasury function.",
+      highlights: [
+        "Learned about financial services and treasury operations inside a major Indonesian bank.",
+        "Developed a commercial perspective on problem-solving alongside an engineering background."
+      ],
+      skills: ["Treasury Operations", "Financial Services", "Excel"]
+    },
+    {
+      role: "Engineering Intern",
+      org: "Flexible Packaging Manufacturer",
+      type: "Manufacturing",
+      period: "",
+      location: "",
+      summary: "Internship in a flexible packaging factory focused on optimizing production processes.",
+      highlights: [
+        "Worked on optimizing production processes on the factory floor.",
+        "Saw first-hand how manufacturing decisions translate into cost and throughput."
+      ],
+      skills: ["Process Optimization", "Manufacturing", "Lean"]
+    }
+  ],
+
+  /* Skills grouped by category — the assistant uses these to answer
+     "does he know X?" and "what languages does he use?" */
+  skills: {
+    "Engineering & CAD": ["SOLIDWORKS", "Ansys", "Mechanical Design", "GD&T", "3D Printing", "CNC"],
+    "Programming": ["Python", "JavaScript", "MATLAB"],
+    "Web & Cloud": ["Cloudflare Workers", "Cloudflare KV", "Serverless", "Chart.js", "Claude API", "Streamlit", "GitHub CI/CD"],
+    "Finance & Business": ["Treasury Operations", "Financial Services", "Technical Analysis", "Excel", "Financial Modelling"],
+    "Other": ["Process Optimization", "Technical Drawing", "Robotics"]
+  },
+
+  /* Resume + profiles. Put your resume PDF in this folder and name it here. */
+  resume: {
+    label: "Download resume (PDF)",
+    url: ""                          // e.g. "Jefferson-Evans-Manadi-Resume.pdf"  ← leave "" if you don't have one yet
+  },
+
   // YOUR PROJECTS — drag through them on the site. Copy a block to add more.
   //
   // Optional media fields per project:
   //   cover:  "filename.jpg"  → thumbnail shown on the project card
+  //   logo:   "logo.png"      → project logo, shown on the card + popup (transparent PNG works best)
+  //   backdrop: "preview.jpg" → screenshot shown dimmed behind the logo (card) and at the top of the popup
   //   video:  a YouTube link, a Vimeo link, or a local file like "demo.mp4"
   //   images: ["shot1.jpg", "shot2.jpg"] → gallery shown inside the project popup
   // Local files (images/video) go in the SAME folder as content.js.
@@ -78,6 +129,8 @@ window.SITE_CONTENT = {
       title: "Forex Analyst",
       category: "Web",
       year: "2026",
+      logo: "FA-Logo-crop.png",
+      backdrop: "FA-Preview.jpeg",
       summary: "Serverless FX research platform that computes live market analytics at the edge and publishes AI-written monthly reports at zero marginal cost.",
       description: [
         "ForexAnalyst (forexanalyst.org) publishes institutional-style monthly research for six currency pairs — price action, technical indicators, macro drivers, and a forward outlook — presented with a minimal, Linear-inspired design.",

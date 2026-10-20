@@ -171,6 +171,10 @@
   .tile{ position:relative; width:min(330px,74vw); aspect-ratio:16/9; border-radius:6px; overflow:hidden; background:var(--panel); z-index:1; box-shadow:0 12px 34px rgba(0,0,0,.55); transition:transform .35s var(--spring), box-shadow .35s var(--ease); }
   .card:hover .tile{ transform:scale(1.07) translateY(-6px); box-shadow:0 24px 60px rgba(0,0,0,.75); }
   .card-thumb{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .card-thumb.dim{ filter:brightness(.36) blur(1.5px); transform:scale(1.05); }
+  .card-logo{ position:absolute; z-index:2; left:50%; top:42%; transform:translate(-50%,-50%); width:52%; max-height:62%; object-fit:contain; filter:drop-shadow(0 4px 18px rgba(0,0,0,.7)); pointer-events:none; }
+  .card-logo{ transition:opacity .35s var(--ease); }
+  .card:hover .card-logo, .card:focus-within .card-logo{ opacity:.12; }
   .tile .nmark{ position:absolute; top:8px; left:11px; z-index:3; font-family:var(--font-display); font-size:1.4rem; line-height:1; color:var(--red); text-shadow:0 1px 6px rgba(0,0,0,.8); }
   .poster-art{ position:absolute; inset:0; display:grid; place-items:center; padding:16px 22px; background:linear-gradient(155deg,#232323 0%,#101010 55%,#2c0a0f 100%); }
   .poster-art span{ font-family:var(--font-display); font-size:clamp(1.7rem,3vw,2.3rem); letter-spacing:.05em; line-height:.95; color:rgba(255,255,255,.94); text-align:center; text-shadow:0 6px 40px rgba(229,9,20,.35); }
@@ -212,6 +216,10 @@
   .m-hero{ position:relative; min-height:150px; background:linear-gradient(165deg,#3a0d12 0%,#181818 65%); }
   .m-hero::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:88px; background:linear-gradient(180deg, rgba(24,24,24,0), var(--panel)); pointer-events:none; }
   .m-media{ display:flex; flex-direction:column; }
+  .m-backdrop{ position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; background:#000; }
+  .m-backdrop .bd{ width:100%; height:100%; object-fit:cover; object-position:top; filter:brightness(.34) blur(1.5px); transform:scale(1.04); border-radius:0; }
+  .m-backdrop .lg{ position:absolute; left:50%; top:44%; transform:translate(-50%,-50%); width:min(56%,400px); height:auto; object-fit:contain; filter:drop-shadow(0 6px 28px rgba(0,0,0,.75)); border-radius:0; }
+  .m-hero.has-logo .m-title{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
   .m-video{ position:relative; width:100%; aspect-ratio:16/9; background:#000; }
   .m-video iframe, .m-video video{ position:absolute; inset:0; width:100%; height:100%; border:0; object-fit:cover; }
   .m-gallery{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; padding:12px 14px 0; }
@@ -463,14 +471,15 @@ function render(){
   document.getElementById('rail').innerHTML = C.projects.map((pr,i)=>`
     <article class="card" data-i="${i}">
       <span class="rank" aria-hidden="true">${i+1}</span>
-      <div class="tile${pr.cover?'':' poster'}">
+      <div class="tile${(pr.cover||pr.backdrop)?'':' poster'}">
         <span class="nmark" aria-hidden="true">${esc(initial)}</span>
-        ${pr.cover
-          ? `<img class="card-thumb" src="${esc(pr.cover)}" alt="${esc(pr.title)}">`
+        ${(pr.cover||pr.backdrop)
+          ? `<img class="card-thumb${pr.logo?' dim':''}" src="${esc(pr.cover||pr.backdrop)}" alt="${esc(pr.title)}">`
           : `<div class="poster-art"><span>${esc(pr.title)}</span></div>`}
+        ${pr.logo?`<img class="card-logo" src="${esc(pr.logo)}" alt="${esc(pr.title)} logo">`:''}
         <div class="tile-grad"></div>
         <div class="tile-info">
-          ${pr.cover?`<h3>${esc(pr.title)}</h3>`:''}
+          ${((pr.cover||pr.backdrop) && !pr.logo)?`<h3>${esc(pr.title)}</h3>`:''}
           <div class="tile-meta"><b class="match">${91+((i*7)%9)}% Match</b><span>${esc(pr.year)}</span><span>${esc(pr.category)}</span></div>
           <div class="tile-hover"><p class="card-sum">${esc(pr.summary)}</p><span class="card-open">ⓘ More info</span></div>
         </div>
@@ -542,6 +551,9 @@ function videoEmbedSrc(url){
 }
 function mediaHTML(pr){
   let html='';
+  if(pr.backdrop){
+    html += `<div class="m-backdrop"><img class="bd" src="${esc(pr.backdrop)}" alt="${esc(pr.title)} preview">${pr.logo?`<img class="lg" src="${esc(pr.logo)}" alt="${esc(pr.title)} logo">`:''}</div>`;
+  }
   if(pr.video){
     const v=videoEmbedSrc(pr.video);
     if(v){
@@ -561,6 +573,7 @@ function openModal(pr, originEl){
   document.getElementById('mTitle').textContent=pr.title;
   document.getElementById('mMeta').textContent=`${pr.year} · Project`;
   document.getElementById('mMedia').innerHTML = mediaHTML(pr);
+  document.querySelector('#modalCard .m-hero').classList.toggle('has-logo', !!(pr.logo && pr.backdrop));
   document.getElementById('mBody').innerHTML=(pr.description||[]).map(d=>`<p>${esc(d)}</p>`).join('');
   document.getElementById('mTags').innerHTML=(pr.tags||[]).map(t=>`<span class="m-tag">${esc(t)}</span>`).join('');
   document.getElementById('mLinks').innerHTML=(pr.links||[]).map(l=>`<a class="btn ghost" href="${esc(l.url)}" ${/^https?:/.test(l.url)?'target="_blank" rel="noopener"':''}>${esc(l.label)}</a>`).join('');
@@ -661,5 +674,13 @@ window.addEventListener('DOMContentLoaded', ()=>{
   runLoader();
 });
 </script>
+
+<!-- ============ JEFF AI — portfolio assistant ============
+     assistant.js     → the engine (search + answers). No UI.
+     assistant-ui.js  → the floating chat widget. No AI logic.
+     Both read the same content.js above, so the assistant always
+     knows exactly what your site says — nothing more, nothing less. -->
+<script src="assistant.js"></script>
+<script src="assistant-ui.js"></script>
 </body>
 </html>
