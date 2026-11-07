@@ -1,5 +1,5 @@
 /* ============================================================
-   JEFF AI — ENGINE  (assistant.js)
+   PORTFOLIO GUIDER — ENGINE  (assistant.js)
    ------------------------------------------------------------
    This file contains NO user interface. It is the "brain" only.
    The look and feel lives in assistant-ui.js.
@@ -25,7 +25,7 @@
      0. CONFIG — safe to edit
      --------------------------------------------------------- */
   const CONFIG = {
-    assistantName: 'Jeff AI',
+    assistantName: 'Portfolio Guider',
     // The assistant speaks ABOUT the owner in third person, never as them.
     subjectFallback: 'Jefferson',
     minScore: 0.8,            // below this, we say "couldn't find that"
@@ -457,7 +457,7 @@
 
     if (has(/\b(hi|hello|hey|yo|good (morning|afternoon|evening))\b/) && q.trim().length < 22) return 'greeting';
     if (has(/\b(thanks|thank you|cheers|appreciate)\b/)) return 'thanks';
-    if (has(/\b(who are you|what are you|your name|jeff ai|are you jefferson|are you a bot|are you an ai)\b/)) return 'meta';
+    if (has(/\b(who are you|what are you|your name|jeff ai|portfolio guider|are you jefferson|are you a bot|are you an ai)\b/)) return 'meta';
     if (has(/\b(resume|cv|curriculum vitae)\b/)) return 'resume';
     if (has(/\b(contact|email|reach|hire|get in touch|available)\b/)) return 'contact';
     if (has(/\b(github|linkedin|twitter|social)\b/)) return 'link';

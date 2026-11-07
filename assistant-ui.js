@@ -1,5 +1,5 @@
 /* ============================================================
-   JEFF AI — INTERFACE  (assistant-ui.js)
+   PORTFOLIO GUIDER — INTERFACE  (assistant-ui.js)
    ------------------------------------------------------------
    All look-and-feel lives here. It knows nothing about how answers
    are produced — it just calls assistant.ask() and renders blocks.
@@ -655,12 +655,10 @@
     doc.addEventListener('keydown', e => {
       if (e.key === 'Escape' && root.classList.contains('open')) close();
     });
-    doc.addEventListener('click', e => {
-      if (!root.classList.contains('open')) return;
-      if (global.innerWidth <= 560) return;         // mobile sheet stays put
-      if (root.contains(e.target)) return;
-      close();
-    });
+    // The panel stays open while you chat: it closes only via the X button,
+    // the launcher button, or Escape — never from a click elsewhere on the page.
+    // (Clicking a suggestion chip used to close it, because the chip is
+    //  removed from the page before this kind of "outside click" check ran.)
 
     renderChips(null);
 

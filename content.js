@@ -48,35 +48,50 @@ window.SITE_CONTENT = {
   },
 
   /* ============================================================
-     WORK EXPERIENCE  →  used by the site AND by the Jeff AI assistant.
+     WORK EXPERIENCE  →  used by the site AND by the Portfolio Guider assistant.
      Copy a { ... } block to add another role. Put a comma after it.
      ============================================================ */
   experience: [
     {
-      role: "Treasury Intern",
-      org: "CIMB Niaga",
-      type: "Banking / Financial Services",
-      period: "",                    // e.g. "Jun 2025 – Aug 2025"
-      location: "",                  // e.g. "Jakarta, Indonesia"
-      summary: "Internship in treasury operations at CIMB Niaga, learning how a major bank runs financial services and manages its treasury function.",
+      role: "Maintenance Engineering Intern",
+      org: "PT Toppan Plasindo Lestari",
+      type: "Flexible Packaging Manufacturing",
+      period: "Jun – Aug 2025",
+      location: "",
+      summary: "Analyzed industrial cooling system performance and energy efficiency in a flexible packaging manufacturing facility.",
       highlights: [
-        "Learned about financial services and treasury operations inside a major Indonesian bank.",
-        "Developed a commercial perspective on problem-solving alongside an engineering background."
+        "Evaluated open-loop and closed-loop cooling configurations, collected operational data, and assessed system performance improvements.",
+        "Reviewed and interpreted AutoCAD piping layouts and technical drawings to understand cooling system configurations, component arrangements, and industrial piping networks."
       ],
-      skills: ["Treasury Operations", "Financial Services", "Excel"]
+      skills: ["Technical Drawing Interpretation", "Industrial Cooling Systems", "Energy Efficiency Analysis", "Data Analysis", "Microsoft Excel", "AutoCAD"],
+      images: ["toppan-cooling-pid.webp", "toppan-cooling-layout.webp"]
     },
     {
-      role: "Engineering Intern",
-      org: "Flexible Packaging Manufacturer",
-      type: "Manufacturing",
+      role: "Treasury & Capital Markets Intern",
+      org: "CIMB Niaga",
+      type: "Banking / Treasury Sales",
+      period: "Jun – Sep 2026",
+      location: "",
+      summary: "Supported Treasury Sales operations through financial market research, foreign exchange analysis, and competitor benchmarking.",
+      highlights: [
+        "Developed an interactive FX tracking dashboard using Python and Streamlit to visualize currency market movements and support data-driven analysis — the prototype that grew into Forex Analyst.",
+        "Conducted comparative research on banking products, treasury services, and pricing structures to identify market opportunities."
+      ],
+      skills: ["Python", "Streamlit", "Microsoft Excel", "Financial Analysis", "Data Visualization", "Market Research"],
+      project: "Forex Analyst"       // links this role to a project card (use the exact project title)
+    },
+    {
+      role: "Drivetrain Team Member",
+      org: "UTWind",
+      type: "Student Design Team",
       period: "",
       location: "",
-      summary: "Internship in a flexible packaging factory focused on optimizing production processes.",
+      summary: "Member of the drivetrain team, contributing CAD models of mechanical drivetrain components.",
       highlights: [
-        "Worked on optimizing production processes on the factory floor.",
-        "Saw first-hand how manufacturing decisions translate into cost and throughput."
+        "Modeled mechanical drivetrain components in CAD.",
+        "Collaborated with teammates across the design process."
       ],
-      skills: ["Process Optimization", "Manufacturing", "Lean"]
+      skills: ["CAD Modeling", "Mechanical Components", "Engineering Collaboration"]
     }
   ],
 
@@ -86,8 +101,8 @@ window.SITE_CONTENT = {
     "Engineering & CAD": ["SOLIDWORKS", "Ansys", "Mechanical Design", "GD&T", "3D Printing", "CNC"],
     "Programming": ["Python", "JavaScript", "MATLAB"],
     "Web & Cloud": ["Cloudflare Workers", "Cloudflare KV", "Serverless", "Chart.js", "Claude API", "Streamlit", "GitHub CI/CD"],
-    "Finance & Business": ["Treasury Operations", "Financial Services", "Technical Analysis", "Excel", "Financial Modelling"],
-    "Other": ["Process Optimization", "Technical Drawing", "Robotics"]
+    "Finance & Business": ["Treasury Operations", "Financial Services", "Technical Analysis", "Excel", "Financial Analysis", "Market Research"],
+    "Other": ["AutoCAD", "Technical Drawing", "Industrial Cooling Systems", "Energy Efficiency Analysis", "Robotics"]
   },
 
   /* Resume + profiles. Put your resume PDF in this folder and name it here. */
@@ -112,8 +127,7 @@ window.SITE_CONTENT = {
       year: "2026",
       summary: "A low-cost, long-reach robotic arm that gives hobbyist and beginner cinematographers smooth, sweeping camera moves without a $100K+ rig.",
       cover: "robotic-arm-cover.png",
-      video: "https://www.youtube.com/watch?v=REPLACE_WITH_YOUR_VIDEO_ID",
-      images: ["robotic-arm-1.jpg", "robotic-arm-2.jpg"],
+      images: ["robotic-arm-right-view.webp", "robotic-arm-exploded-wrist.webp"],
       description: [
         "The client wanted a way for hobbyist and beginner cinematographers to get smooth, sweeping camera moves without paying for professional equipment. Track dollies and Steadicam rigs cost $100K-$500K+, are heavy, and need multiple operators to run — completely out of reach for someone shooting on a modest budget. They needed a robotic arm that could mount a lightweight camera, cover a large working area, and repeat those cinematic moves reliably, at a fraction of the cost.",
         "I started by surveying commercial and open-source/hobby arm designs, benchmarking reach, payload, and cost against what the DIY community was already building. That research set the engineering specification — reach, payload, degrees of freedom, motion precision, and target budget — so every later decision could be checked against a concrete target instead of guesswork.",

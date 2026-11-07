@@ -222,8 +222,33 @@
   .m-hero.has-logo .m-title{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
   .m-video{ position:relative; width:100%; aspect-ratio:16/9; background:#000; }
   .m-video iframe, .m-video video{ position:absolute; inset:0; width:100%; height:100%; border:0; object-fit:cover; }
-  .m-gallery{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; padding:12px 14px 0; }
-  .m-gallery img{ width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px; }
+  .m-gallery{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; padding:12px 14px 0; }
+  .m-gallery a{ display:block; border-radius:6px; overflow:hidden; background:#fff; }
+  .m-gallery img{ width:100%; aspect-ratio:4/3; object-fit:contain; border-radius:6px; background:#fff; transition:transform .3s var(--ease); }
+  .m-gallery a:hover img{ transform:scale(1.03); }
+
+  /* EXPERIENCE */
+  #experience{ padding-top:clamp(20px,4vh,50px); padding-bottom:clamp(40px,7vh,90px); max-width:1060px; }
+  .xp-list{ position:relative; display:flex; flex-direction:column; gap:14px; margin-top:18px; }
+  .xp{ position:relative; display:grid; grid-template-columns:150px 1fr auto; gap:22px; align-items:start; padding:22px 24px; background:#141414; border:1px solid #262626; border-radius:8px; cursor:pointer; text-align:left; color:inherit; font:inherit; width:100%; transition:border-color .25s, transform .3s var(--spring), background .25s; }
+  .xp:hover, .xp:focus-visible{ border-color:var(--red); background:#171717; transform:translateY(-2px); }
+  .xp-when{ font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); padding-top:6px; }
+  .xp-org{ font-family:var(--font-display); font-weight:400; font-size:clamp(1.6rem,3vw,2.1rem); letter-spacing:.02em; line-height:1; color:#fff; }
+  .xp-role{ color:var(--red); font-weight:700; font-size:.92rem; margin:6px 0 10px; }
+  .xp-sum{ color:var(--ink-2); font-size:.98rem; max-width:62ch; }
+  .xp .chips{ margin-top:12px; }
+  .xp .chip{ font-size:11px; padding:5px 10px; }
+  .xp-side{ display:flex; flex-direction:column; align-items:flex-end; gap:10px; }
+  .xp-thumbs{ display:flex; gap:6px; }
+  .xp-thumbs img{ width:64px; height:48px; object-fit:cover; border-radius:4px; background:#fff; border:1px solid #333; }
+  .xp-proj{ font-size:12px; font-weight:700; letter-spacing:.06em; color:#fff; background:#1f1f1f; border:1px solid #333; border-radius:4px; padding:6px 10px; white-space:nowrap; transition:border-color .25s, background .25s; }
+  .xp-proj:hover{ border-color:var(--red); background:#2a0b0e; }
+  .xp-more{ font-size:12px; color:var(--ink-3); white-space:nowrap; }
+  @media (max-width:760px){
+    .xp{ grid-template-columns:1fr; gap:10px; padding:18px; }
+    .xp-when{ padding-top:0; }
+    .xp-side{ flex-direction:row; align-items:center; justify-content:space-between; }
+  }
   .m-title{ position:absolute; left:clamp(20px,4vw,40px); bottom:12px; z-index:2; font-family:var(--font-display); font-weight:400; font-size:clamp(2rem,4.6vw,3rem); letter-spacing:.03em; line-height:.95; pointer-events:none; text-shadow:0 3px 24px rgba(0,0,0,.85); }
   .m-content{ padding:24px clamp(20px,4vw,40px) 36px; }
   .m-cat{ display:inline-block; font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--red); margin-bottom:6px; }
@@ -309,6 +334,10 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
       <span class="lbl">about</span>
     </a>
+    <a href="#experience" aria-label="Experience">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg>
+      <span class="lbl">experience</span>
+    </a>
     <a href="#work" aria-label="Work">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M8 5l2 4M14 5l2 4"/></svg>
       <span class="lbl">work</span>
@@ -330,6 +359,9 @@
 
   <!-- ABOUT (who I am — right after the billboard) -->
   <section id="about"><div id="aboutInner"></div></section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience"><div id="expInner"></div></section>
 
   <!-- WORK -->
   <section id="work">
@@ -437,7 +469,7 @@ function render(){
       <div class="bb-text" data-reveal>
         <p class="eyebrow"><span class="nmark">${esc(initial)}</span><span class="series">Portfolio</span></p>
         <h1 class="name">${nameHTML}</h1>
-        <div class="match-row"><b class="match">98% Match</b><span>2026</span><span>${esc(p.location)}</span><span class="vtag">HD</span><span class="vtag">CAD</span></div>
+        <div class="match-row"><span>2026</span><span>${esc(p.location)}</span><span class="vtag">HD</span><span class="vtag">CAD</span></div>
         <p class="avail">${esc(p.role)}</p>
         <p class="lead">${esc(p.tagline)}</p>
         <div class="hero-cta">
@@ -467,6 +499,46 @@ function render(){
       <div class="chips">${a.tools.map(t=>`<span class="chip">${esc(t)}</span>`).join('')}</div>
     </div>`;
 
+  // experience
+  const xp = C.experience || [];
+  document.getElementById('expInner').innerHTML = xp.length ? `
+    <div data-reveal>
+      <p class="row-label">Experience</p>
+      <h2 class="about-head">Where I've worked<span class="accent">.</span></h2>
+      <div class="xp-list">${xp.map((x,i)=>`
+        <div class="xp" role="button" tabindex="0" data-xp="${i}" aria-label="${esc(x.org)} — more info">
+          <div class="xp-when">${esc(x.period || x.type || '')}</div>
+          <div>
+            <div class="xp-org">${esc(x.org)}</div>
+            <div class="xp-role">${esc(x.role)}</div>
+            <p class="xp-sum">${esc(x.summary)}</p>
+            <div class="chips">${(x.skills||[]).map(t=>`<span class="chip">${esc(t)}</span>`).join('')}</div>
+          </div>
+          <div class="xp-side">
+            ${(x.images||[]).length ? `<div class="xp-thumbs">${x.images.slice(0,2).map(src=>`<img src="${esc(src)}" alt="" loading="lazy">`).join('')}</div>` : ''}
+            ${x.project ? `<button type="button" class="xp-proj" data-proj="${esc(x.project)}">▶ ${esc(x.project)}</button>` : ''}
+            <span class="xp-more">ⓘ More info</span>
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>` : '';
+  document.querySelectorAll('#expInner .xp').forEach(el=>{
+    const x = xp[+el.dataset.xp];
+    const openXp = e=>{
+      const pb = e.target.closest('[data-proj]');
+      if(pb){ e.stopPropagation(); openProjectByTitle(pb.dataset.proj); return; }
+      openModal({
+        title: x.org, category: x.role,
+        meta: [x.period, x.type, x.location].filter(Boolean).join(' · '),
+        description: [x.summary].concat(x.highlights||[]),
+        tags: x.skills, images: x.images,
+        links: x.project ? [{ label: '▶ View ' + x.project, project: x.project }] : []
+      }, el);
+    };
+    el.addEventListener('click', openXp);
+    el.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openXp(e); } });
+  });
+
   // work rail — top-10 style
   document.getElementById('rail').innerHTML = C.projects.map((pr,i)=>`
     <article class="card" data-i="${i}">
@@ -480,7 +552,7 @@ function render(){
         <div class="tile-grad"></div>
         <div class="tile-info">
           ${((pr.cover||pr.backdrop) && !pr.logo)?`<h3>${esc(pr.title)}</h3>`:''}
-          <div class="tile-meta"><b class="match">${91+((i*7)%9)}% Match</b><span>${esc(pr.year)}</span><span>${esc(pr.category)}</span></div>
+          <div class="tile-meta"><span>${esc(pr.year)}</span><span>${esc(pr.category)}</span></div>
           <div class="tile-hover"><p class="card-sum">${esc(pr.summary)}</p><span class="card-open">ⓘ More info</span></div>
         </div>
       </div>
@@ -505,6 +577,13 @@ function render(){
   // project cards are opened via the rail's own pointerup handler (see initRail) —
   // the rail captures the pointer on drag, so a listener on the card itself
   // stops receiving events after the first interaction.
+}
+
+function openProjectByTitle(title){
+  const i = (C.projects||[]).findIndex(p=>p.title===title);
+  if(i<0) return;
+  const card = document.querySelectorAll('#rail .card')[i] || null;
+  openModal(C.projects[i], card);
 }
 
 /* ---------- DRAG RAIL ---------- */
@@ -563,7 +642,7 @@ function mediaHTML(pr){
     }
   }
   if(pr.images && pr.images.length){
-    html += `<div class="m-gallery">${pr.images.map(src=>`<img src="${esc(src)}" alt="${esc(pr.title)}">`).join('')}</div>`;
+    html += `<div class="m-gallery">${pr.images.map(src=>`<a href="${esc(src)}" target="_blank" rel="noopener" title="Open full size"><img src="${esc(src)}" alt="${esc(pr.title)}" loading="lazy"></a>`).join('')}</div>`;
   }
   return html;
 }
@@ -571,12 +650,15 @@ function openModal(pr, originEl){
   if(!pr) return;
   document.getElementById('mCat').textContent=pr.category;
   document.getElementById('mTitle').textContent=pr.title;
-  document.getElementById('mMeta').textContent=`${pr.year} · Project`;
+  document.getElementById('mMeta').textContent = pr.meta || `${pr.year} · Project`;
   document.getElementById('mMedia').innerHTML = mediaHTML(pr);
   document.querySelector('#modalCard .m-hero').classList.toggle('has-logo', !!(pr.logo && pr.backdrop));
   document.getElementById('mBody').innerHTML=(pr.description||[]).map(d=>`<p>${esc(d)}</p>`).join('');
   document.getElementById('mTags').innerHTML=(pr.tags||[]).map(t=>`<span class="m-tag">${esc(t)}</span>`).join('');
-  document.getElementById('mLinks').innerHTML=(pr.links||[]).map(l=>`<a class="btn ghost" href="${esc(l.url)}" ${/^https?:/.test(l.url)?'target="_blank" rel="noopener"':''}>${esc(l.label)}</a>`).join('');
+  document.getElementById('mLinks').innerHTML=(pr.links||[]).map(l=> l.project!=null
+    ? `<button type="button" class="btn ghost" data-open-project="${esc(l.project)}">${esc(l.label)}</button>`
+    : `<a class="btn ghost" href="${esc(l.url)}" ${/^https?:/.test(l.url)?'target="_blank" rel="noopener"':''}>${esc(l.label)}</a>`).join('');
+  document.querySelectorAll('#mLinks [data-open-project]').forEach(b=> b.addEventListener('click', ()=> openProjectByTitle(b.dataset.openProject)));
 
   const modal=document.getElementById('modal'), card=document.getElementById('modalCard');
   modal.classList.add('open'); document.body.style.overflow='hidden';
@@ -617,7 +699,7 @@ function initScroll(){
   const io=new IntersectionObserver(es=>{ es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }); }, {threshold:.12});
   document.querySelectorAll('[data-reveal]').forEach(el=> io.observe(el));
 
-  const secs=['home','about','work','contact'].map(id=>document.getElementById(id));
+  const secs=['home','about','experience','work','contact'].map(id=>document.getElementById(id));
   const navA=[...document.querySelectorAll('.nav-links a')];
   const navIO=new IntersectionObserver(es=>{ es.forEach(en=>{ if(en.isIntersecting){
     const id=en.target.id; navA.forEach(a=> a.classList.toggle('active', a.getAttribute('href')==='#'+id));
@@ -675,7 +757,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
 });
 </script>
 
-<!-- ============ JEFF AI — portfolio assistant ============
+<!-- ============ PORTFOLIO GUIDER — portfolio assistant ============
      assistant.js     → the engine (search + answers). No UI.
      assistant-ui.js  → the floating chat widget. No AI logic.
      Both read the same content.js above, so the assistant always
