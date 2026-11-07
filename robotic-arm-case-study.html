@@ -60,11 +60,12 @@
   .spec .k{ font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--green); margin-bottom:6px; }
   .spec .v{ font-family:var(--font-display); font-weight:400; font-size:1.35rem; letter-spacing:.03em; line-height:1.05; }
 
-  .gallery{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin:24px 0 32px; }
-  .gallery img{ aspect-ratio:4/3; object-fit:cover; background:var(--panel); }
-
-  .video{ position:relative; width:100%; aspect-ratio:16/9; border-radius:8px; overflow:hidden; background:#000; margin:24px 0 32px; box-shadow:0 20px 60px rgba(0,0,0,.55); }
-  .video iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .drawings{ display:grid; gap:22px; margin:24px 0 32px; }
+  .drawings figure{ margin:0; }
+  .drawings a{ display:block; border-radius:8px; overflow:hidden; background:#fff; box-shadow:0 20px 60px rgba(0,0,0,.55); transition:transform .3s; }
+  .drawings a:hover{ transform:translateY(-3px); }
+  .drawings img{ width:100%; border-radius:0; }
+  .drawings figcaption{ font-size:13px; color:var(--ink-3); margin-top:10px; }
 
   .tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:40px; }
   .tag{ font-size:12px; background:#2a2a2a; color:#ddd; border-radius:4px; padding:6px 14px; }
@@ -88,8 +89,7 @@
   <img class="cover" src="robotic-arm-cover.png" alt="Robotic arm CAD render">
 
   <h2>The brief</h2>
-  <p>The client wanted a way for hobbyist and beginner cinematographers to get smooth, sweeping camera moves without paying for professional equipment. Track dollies and Steadicam rigs cost $100K&ndash;$500K+, are heavy, and need multiple operators to run &mdash; completely out of reach for someone shooting on a modest budget.</p>
-  <p>They needed a robotic arm that could mount a lightweight camera, cover a large working area for sweeping shots, and repeat those cinematic moves reliably, at a fraction of the cost of the professional alternatives.</p>
+  <p>I designed this arm for a client who wanted smooth, sweeping camera moves on a hobbyist budget. Track dollies and Steadicam rigs cost $100K&ndash;$500K+, are heavy, and need several operators, so I set out to give a lightweight camera large, repeatable moves at a fraction of that cost.</p>
 
   <div class="callout">
     <div class="label">What the client asked for</div>
@@ -110,18 +110,21 @@
   <p>From the specification, I developed and compared several candidate arm geometries and joint configurations &mdash; different degrees-of-freedom layouts, different structural approaches &mdash; before converging on a final design. Early candidates were deliberately divergent to explore the solution space; later iterations narrowed in on the combination of reach, motion smoothness, and cost that best matched the brief.</p>
   <p>Where possible I specified standardized structural extrusion and hobby-grade motors to keep the bill of materials low and serviceable with common replacement parts. Custom 3D-printed and CNC parts were reserved for the joints, where fit and function mattered most and off-the-shelf options fell short.</p>
 
-  <div class="video">
-    <iframe src="https://www.youtube.com/embed/REPLACE_WITH_YOUR_VIDEO_ID" title="Robotic arm demo" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-  </div>
-
-  <h2>Gallery</h2>
-  <div class="gallery">
-    <img src="robotic-arm-1.jpg" alt="Robotic arm detail 1">
-    <img src="robotic-arm-2.jpg" alt="Robotic arm detail 2">
+  <h2>Engineering drawings</h2>
+  <p>I documented the design in a six-sheet SOLIDWORKS drawing package. The wrist uses three NEMA 17 stepper motors driving belts and pulleys, supported by ball and thrust bearings, with the structure in aluminum and PLA. Click a drawing to open it full size.</p>
+  <div class="drawings">
+    <figure>
+      <a href="robotic-arm-right-view.webp" target="_blank" rel="noopener"><img src="robotic-arm-right-view.webp" alt="Right view of the robotic arm assembly with key dimensions" loading="lazy"></a>
+      <figcaption>Right view of the arm assembly with key dimensions (sheet 2 of 6).</figcaption>
+    </figure>
+    <figure>
+      <a href="robotic-arm-exploded-wrist.webp" target="_blank" rel="noopener"><img src="robotic-arm-exploded-wrist.webp" alt="Exploded view of the wrist with bill of materials" loading="lazy"></a>
+      <figcaption>Exploded wrist with bill of materials: pulleys, belts, bearings and three NEMA 17 steppers (sheet 5 of 6).</figcaption>
+    </figure>
   </div>
 
   <h2>Outcome</h2>
-  <p>The deliverable is a full CAD assembly with detailed engineering drawings, a parts list referencing standard components, and supporting calculations validating that the design meets the client's reach, payload, and cost targets &mdash; ready to move into detailed design and prototyping.</p>
+  <p>I delivered a full CAD assembly, the engineering drawing package, a parts list built on standard components, and calculations showing the design meets the client's reach, payload and cost targets, ready to move into prototyping.</p>
 
   <div class="tags">
     <span class="tag">SOLIDWORKS</span>
@@ -135,7 +138,7 @@
 
 </div>
 
-<!-- ============ JEFF AI — portfolio assistant ============
+<!-- ============ PORTFOLIO GUIDER — portfolio assistant ============
      content.js is loaded here too so the assistant has the same
      knowledge base on this page as it does on the home page. -->
 <script src="content.js"></script>

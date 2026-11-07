@@ -55,6 +55,7 @@ window.SITE_CONTENT = {
     {
       role: "Treasury & Capital Markets Intern",
       org: "CIMB Niaga",
+      logo: "logo-cimb-niaga.webp",
       type: "Banking / Treasury Sales",
       period: "Jun – Sep 2026",
       location: "",
@@ -69,6 +70,7 @@ window.SITE_CONTENT = {
     {
       role: "Drivetrain Team Member",
       org: "UTWind",
+      logo: "logo-utwind.webp",
       type: "Student Design Team",
       period: "Jan – May 2026",
       location: "",
@@ -82,6 +84,7 @@ window.SITE_CONTENT = {
     {
       role: "Maintenance Engineering Intern",
       org: "PT Toppan Plasindo Lestari",
+      logo: "logo-toppan.webp",
       type: "Flexible Packaging Manufacturing",
       period: "Jun – Aug 2025",
       location: "",
@@ -125,14 +128,14 @@ window.SITE_CONTENT = {
       title: "Robotic Arm",
       category: "Mechanical",
       year: "2026",
-      summary: "A low-cost, long-reach robotic arm that gives hobbyist and beginner cinematographers smooth, sweeping camera moves without a $100K+ rig.",
+      summary: "I designed a low-cost, long-reach robotic arm that gives beginner cinematographers smooth, repeatable camera moves without a $100K+ rig.",
       cover: "robotic-arm-cover.png",
       images: ["robotic-arm-right-view.webp", "robotic-arm-exploded-wrist.webp"],
       description: [
-        "The client wanted a way for hobbyist and beginner cinematographers to get smooth, sweeping camera moves without paying for professional equipment. Track dollies and Steadicam rigs cost $100K-$500K+, are heavy, and need multiple operators to run — completely out of reach for someone shooting on a modest budget. They needed a robotic arm that could mount a lightweight camera, cover a large working area, and repeat those cinematic moves reliably, at a fraction of the cost.",
-        "I started by surveying commercial and open-source/hobby arm designs, benchmarking reach, payload, and cost against what the DIY community was already building. That research set the engineering specification — reach, payload, degrees of freedom, motion precision, and target budget — so every later decision could be checked against a concrete target instead of guesswork.",
-        "From there I developed and compared several candidate arm geometries and joint configurations, iterating toward a final design that balances reach, motion smoothness, and cost. Where possible I specified standardized structural extrusion and hobby-grade motors to keep the bill of materials low; custom 3D-printed and CNC parts were reserved for the joints where fit and function mattered most.",
-        "The deliverable is a full CAD assembly with detailed engineering drawings, a parts list referencing standard components, and supporting calculations validating that the design meets the client's reach, payload, and cost targets."
+        "I designed a camera arm for a client who wanted sweeping, cinematic shots on a hobbyist budget, where professional dollies and Steadicam rigs cost $100K or more.",
+        "I benchmarked commercial and open-source arms to set a spec for reach, payload, degrees of freedom and cost, then compared several arm geometries and joint layouts before settling on the final design.",
+        "To keep it affordable I built the structure from standard aluminum extrusion and drove the wrist with NEMA 17 stepper motors through belts and pulleys, using custom 3D-printed (PLA) parts only where fit mattered most.",
+        "I delivered the full SOLIDWORKS assembly, a six-sheet engineering drawing package (including the arm assembly and an exploded wrist with its bill of materials), and calculations showing the design meets the client's targets."
       ],
       tags: ["SOLIDWORKS", "Mechanical Design", "Robotics"],
       links: [
@@ -145,11 +148,11 @@ window.SITE_CONTENT = {
       year: "2026",
       logo: "FA-Logo-crop.png",
       backdrop: "FA-Preview.jpeg",
-      summary: "Serverless FX research platform that computes live market analytics at the edge and publishes AI-written monthly reports at zero marginal cost.",
+      summary: "I built a serverless FX research platform that computes live market analytics at the edge and publishes AI-written monthly reports at zero marginal cost.",
       description: [
-        "ForexAnalyst (forexanalyst.org) publishes institutional-style monthly research for six currency pairs — price action, technical indicators, macro drivers, and a forward outlook — presented with a minimal, Linear-inspired design.",
-        "The entire platform runs on a single Cloudflare Worker: it ingests daily OHLC data from Yahoo Finance, computes RSI, MACD, moving averages, market structure and pivot levels server-side, and renders interactive charts on the client. Monthly research notes are generated once by Claude with web-verified event data, then stored in Cloudflare KV and served as static editions — so visitors read AI research without triggering any per-request inference cost. Edge caching keeps market data fresh while holding third-party API usage near zero.",
-        "The project began as a Streamlit prototype and was re-engineered into a dependency-free vanilla JS frontend with a custom design system, deployed via a GitHub-to-Cloudflare CI pipeline on a custom domain."
+        "I built ForexAnalyst (forexanalyst.org) to publish institutional-style monthly research on six currency pairs: price action, technical indicators, macro drivers and a forward outlook.",
+        "I run the whole platform on a single Cloudflare Worker. It pulls daily OHLC data from Yahoo Finance, computes RSI, MACD, moving averages, market structure and pivot levels server-side, and renders interactive charts in the browser. I generate each month's research notes once with Claude using web-verified event data and store them in Cloudflare KV, so readers never trigger per-request AI costs.",
+        "It started as a Streamlit FX dashboard during my CIMB Niaga internship. I rebuilt it as a dependency-free vanilla JS site with its own design system, deployed from GitHub to Cloudflare on a custom domain."
       ],
       tags: ["JavaScript", "Cloudflare Workers", "KV", "Chart.js", "Claude API", "Serverless"],
       links: [
@@ -160,11 +163,11 @@ window.SITE_CONTENT = {
       title: "Gearbox Prototype",
       category: "Mechanical",
       year: "2025",
-      summary: "A functional gearbox designed in SOLIDWORKS, 3D-printed, assembled and tested for gear engagement, shaft alignment and smooth rotation.",
+      summary: "I designed a working gearbox in SOLIDWORKS, 3D-printed it, assembled it and tested gear engagement, shaft alignment and rotation.",
       cover: "gearbox-cover.webp",
       description: [
-        "Designed and developed a functional gearbox prototype using SOLIDWORKS and additive manufacturing. Created detailed engineering drawings and a gearbox assembly consisting of gears, shafts, and a supporting housing.",
-        "Fabricated the components using 3D printing, assembled the physical prototype, and conducted functional testing to evaluate gear engagement, shaft alignment, and rotational motion."
+        "I designed a functional gearbox in SOLIDWORKS, including the gears, shafts and supporting housing, and produced detailed engineering drawings for the parts and assembly.",
+        "I 3D-printed the components, assembled the physical prototype and ran functional tests to check gear engagement, shaft alignment and smooth rotation."
       ],
       tags: ["SOLIDWORKS", "Engineering Drawing", "Mechanical Design", "3D Printing", "Prototyping", "Assembly", "Functional Testing"],
       links: []
