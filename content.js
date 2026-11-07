@@ -53,20 +53,6 @@ window.SITE_CONTENT = {
      ============================================================ */
   experience: [
     {
-      role: "Maintenance Engineering Intern",
-      org: "PT Toppan Plasindo Lestari",
-      type: "Flexible Packaging Manufacturing",
-      period: "Jun – Aug 2025",
-      location: "",
-      summary: "Analyzed industrial cooling system performance and energy efficiency in a flexible packaging manufacturing facility.",
-      highlights: [
-        "Evaluated open-loop and closed-loop cooling configurations, collected operational data, and assessed system performance improvements.",
-        "Reviewed and interpreted AutoCAD piping layouts and technical drawings to understand cooling system configurations, component arrangements, and industrial piping networks."
-      ],
-      skills: ["Technical Drawing Interpretation", "Industrial Cooling Systems", "Energy Efficiency Analysis", "Data Analysis", "Microsoft Excel", "AutoCAD"],
-      images: ["toppan-cooling-pid.webp", "toppan-cooling-layout.webp"]
-    },
-    {
       role: "Treasury & Capital Markets Intern",
       org: "CIMB Niaga",
       type: "Banking / Treasury Sales",
@@ -84,7 +70,7 @@ window.SITE_CONTENT = {
       role: "Drivetrain Team Member",
       org: "UTWind",
       type: "Student Design Team",
-      period: "",
+      period: "Jan – May 2026",
       location: "",
       summary: "Member of the drivetrain team, contributing CAD models of mechanical drivetrain components.",
       highlights: [
@@ -92,6 +78,20 @@ window.SITE_CONTENT = {
         "Collaborated with teammates across the design process."
       ],
       skills: ["CAD Modeling", "Mechanical Components", "Engineering Collaboration"]
+    },
+    {
+      role: "Maintenance Engineering Intern",
+      org: "PT Toppan Plasindo Lestari",
+      type: "Flexible Packaging Manufacturing",
+      period: "Jun – Aug 2025",
+      location: "",
+      summary: "Analyzed industrial cooling system performance and energy efficiency in a flexible packaging manufacturing facility.",
+      highlights: [
+        "Evaluated open-loop and closed-loop cooling configurations, collected operational data, and assessed system performance improvements.",
+        "Reviewed and interpreted AutoCAD piping layouts and technical drawings to understand cooling system configurations, component arrangements, and industrial piping networks."
+      ],
+      skills: ["Technical Drawing Interpretation", "Industrial Cooling Systems", "Energy Efficiency Analysis", "Data Analysis", "Microsoft Excel", "AutoCAD"],
+      images: ["toppan-cooling-pid.webp", "toppan-cooling-layout.webp"]
     }
   ],
 
