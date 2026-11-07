@@ -142,6 +142,19 @@ window.SITE_CONTENT = {
         { label: "Visit forexanalyst.org ↗", url: "https://forexanalyst.org" }
       ]
     },
+    {
+      title: "Gearbox Prototype",
+      category: "Mechanical",
+      year: "2025",
+      summary: "A functional gearbox designed in SOLIDWORKS, 3D-printed, assembled and tested for gear engagement, shaft alignment and smooth rotation.",
+      cover: "gearbox-cover.webp",
+      description: [
+        "Designed and developed a functional gearbox prototype using SOLIDWORKS and additive manufacturing. Created detailed engineering drawings and a gearbox assembly consisting of gears, shafts, and a supporting housing.",
+        "Fabricated the components using 3D printing, assembled the physical prototype, and conducted functional testing to evaluate gear engagement, shaft alignment, and rotational motion."
+      ],
+      tags: ["SOLIDWORKS", "Engineering Drawing", "Mechanical Design", "3D Printing", "Prototyping", "Assembly", "Functional Testing"],
+      links: []
+    },
     // 👉 TO ADD A NEW PROJECT: copy the entire { ... } block above (Robotic Arm),
     // paste it here as a new block, and change the text inside the quotes.
     // No coding needed — just copy, paste, and edit. Add a comma after each
