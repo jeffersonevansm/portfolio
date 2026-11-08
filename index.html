@@ -219,6 +219,11 @@
   .m-backdrop{ position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; background:#000; }
   .m-backdrop .bd{ width:100%; height:100%; object-fit:cover; object-position:top; filter:brightness(.34) blur(1.5px); transform:scale(1.04); border-radius:0; }
   .m-backdrop .lg{ position:absolute; left:50%; top:44%; transform:translate(-50%,-50%); width:min(56%,400px); height:auto; object-fit:contain; filter:drop-shadow(0 6px 28px rgba(0,0,0,.75)); border-radius:0; }
+  .m-banner{ background:#fff; padding:clamp(34px,6vw,56px) clamp(22px,7%,64px); }
+  .m-banner img{ width:100%; height:auto; border-radius:0; }
+  .m-hero.has-banner{ background:#fff; }
+  .m-hero.has-banner::after{ display:none; }
+  .m-hero.has-banner .m-title{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
   .m-hero.has-logo .m-title{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
   .m-video{ position:relative; width:100%; aspect-ratio:16/9; background:#000; }
   .m-video iframe, .m-video video{ position:absolute; inset:0; width:100%; height:100%; border:0; object-fit:cover; }
@@ -231,13 +236,17 @@
   #background{ padding-top:clamp(10px,3vh,40px); padding-bottom:clamp(30px,6vh,70px); max-width:1060px; }
   .edu{ display:grid; grid-template-columns:auto 1fr; gap:26px; align-items:start; margin-top:18px; padding:26px 28px; background:#141414; border:1px solid #262626; border-left:4px solid var(--red); border-radius:8px; }
   .edu-badge{ width:64px; height:64px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg,#e50914 0%,#7a0510 100%); color:#fff; font-family:var(--font-display); font-size:1.45rem; letter-spacing:.02em; box-shadow:0 8px 24px rgba(0,0,0,.5); }
+  .edu{ cursor:pointer; transition:border-color .25s, transform .3s var(--spring), background .25s; }
+  .edu:hover, .edu:focus-visible{ border-color:var(--red); background:#171717; transform:translateY(-2px); }
+  .edu-logo{ width:180px; height:auto; border-radius:8px; background:#fff; box-shadow:0 8px 24px rgba(0,0,0,.5); }
+  .edu .xp-more{ display:inline-block; margin-top:6px; }
   .edu-school{ font-family:var(--font-display); font-weight:400; font-size:clamp(1.7rem,3.2vw,2.3rem); letter-spacing:.02em; line-height:1; color:#fff; }
   .edu-degree{ color:#fff; font-weight:700; font-size:1.02rem; margin-top:8px; }
   .edu-minor{ color:var(--red); font-weight:700; font-size:.95rem; margin-top:2px; }
   .edu-meta{ font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); margin-top:10px; }
   .edu-notes{ margin-top:14px; }
   .edu-notes p{ color:var(--ink-2); font-size:.98rem; max-width:66ch; margin-bottom:8px; }
-  @media (max-width:760px){ .edu{ grid-template-columns:1fr; gap:14px; padding:20px; } .edu-badge{ width:52px; height:52px; font-size:1.4rem; } }
+  @media (max-width:760px){ .edu{ grid-template-columns:1fr; gap:14px; padding:20px; } .edu-badge{ width:52px; height:52px; font-size:1.4rem; } .edu-logo{ width:150px; } }
 
   /* EXPERIENCE */
   #experience{ padding-top:clamp(20px,4vh,50px); padding-bottom:clamp(40px,7vh,90px); max-width:1060px; }
@@ -414,7 +423,7 @@
       <div class="m-cat" id="mCat"></div>
       <div class="m-meta" id="mMeta"></div>
       <div class="m-body" id="mBody"></div>
-      <div class="m-label">Built with</div>
+      <div class="m-label" id="mTagsLabel">Built with</div>
       <div class="m-tags" id="mTags"></div>
       <div class="m-links" id="mLinks"></div>
     </div>
@@ -527,17 +536,32 @@ function render(){
     <div data-reveal>
       <p class="row-label">My background</p>
       <h2 class="about-head">Where I study<span class="accent">.</span></h2>
-      <div class="edu">
-        <div class="edu-badge" aria-hidden="true">${esc(ed.badge || ed.school.split(/\s+/).filter(w=>/^[A-Z]/.test(w)).map(w=>w[0]).join('').slice(0,3))}</div>
+      <div class="edu" role="button" tabindex="0" aria-label="${esc(ed.school)} — more info">
+        ${ed.logo
+          ? `<img class="edu-logo" src="${esc(ed.logo)}" alt="${esc(ed.school)} logo" loading="lazy">`
+          : `<div class="edu-badge" aria-hidden="true">${esc(ed.badge || ed.school.split(/\s+/).filter(w=>/^[A-Z]/.test(w)).map(w=>w[0]).join('').slice(0,3))}</div>`}
         <div>
           <div class="edu-school">${esc(ed.school)}</div>
           ${ed.degree ? `<div class="edu-degree">${esc(ed.degree)}</div>` : ''}
           ${ed.minor ? `<div class="edu-minor">${esc(ed.minor)}</div>` : ''}
-          <div class="edu-meta">${[ed.year, ed.location].filter(Boolean).map(esc).join(' · ')}</div>
+          <div class="edu-meta">${[ed.year, ed.period, ed.location].filter(Boolean).map(esc).join(' · ')}</div>
           ${(ed.notes||[]).length ? `<div class="edu-notes">${ed.notes.map(t=>`<p>${esc(t)}</p>`).join('')}</div>` : ''}
+          <span class="xp-more">ⓘ More info</span>
         </div>
       </div>
     </div>` : '';
+  const eduEl = document.querySelector('#bgInner .edu');
+  if(eduEl){
+    const openEdu = ()=> openModal({
+      title: ed.school, category: ed.degree,
+      meta: [ed.minor, ed.period, ed.location].filter(Boolean).join(' · '),
+      banner: ed.banner, logo: ed.banner ? null : ed.logo,
+      description: (ed.notes||[]),
+      tags: [ed.degree, ed.minor, ed.year].filter(Boolean), tagsLabel: 'Program', links: []
+    }, eduEl);
+    eduEl.addEventListener('click', openEdu);
+    eduEl.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openEdu(); } });
+  }
 
   // experience
   const xp = C.experience || [];
@@ -574,7 +598,7 @@ function render(){
         title: x.org, category: x.role,
         meta: [x.period, x.type, x.location].filter(Boolean).join(' · '),
         description: [x.summary].concat(x.highlights||[]),
-        tags: x.skills, images: x.images,
+        tags: x.skills, tagsLabel: 'Skills', images: x.images,
         links: x.project ? [{ label: '▶ View ' + x.project, project: x.project }] : []
       }, el);
     };
@@ -673,6 +697,9 @@ function videoEmbedSrc(url){
 }
 function mediaHTML(pr){
   let html='';
+  if(pr.banner){
+    html += `<div class="m-banner"><img src="${esc(pr.banner)}" alt="${esc(pr.title)}"></div>`;
+  }
   if(pr.backdrop){
     html += `<div class="m-backdrop"><img class="bd" src="${esc(pr.backdrop)}" alt="${esc(pr.title)} preview">${pr.logo?`<img class="lg" src="${esc(pr.logo)}" alt="${esc(pr.title)} logo">`:''}</div>`;
   }
@@ -696,7 +723,9 @@ function openModal(pr, originEl){
   document.getElementById('mMeta').textContent = pr.meta || `${pr.year} · Project`;
   document.getElementById('mMedia').innerHTML = mediaHTML(pr);
   document.querySelector('#modalCard .m-hero').classList.toggle('has-logo', !!(pr.logo && pr.backdrop));
+  document.querySelector('#modalCard .m-hero').classList.toggle('has-banner', !!pr.banner);
   document.getElementById('mBody').innerHTML=(pr.description||[]).map(d=>`<p>${esc(d)}</p>`).join('');
+  document.getElementById('mTagsLabel').textContent = pr.tagsLabel || 'Built with';
   document.getElementById('mTags').innerHTML=(pr.tags||[]).map(t=>`<span class="m-tag">${esc(t)}</span>`).join('');
   document.getElementById('mLinks').innerHTML=(pr.links||[]).map(l=> l.project!=null
     ? `<button type="button" class="btn ghost" data-open-project="${esc(l.project)}">${esc(l.label)}</button>`

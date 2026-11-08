@@ -53,10 +53,13 @@ window.SITE_CONTENT = {
      ============================================================ */
   education: {
     school: "University of Toronto",
-    badge: "UofT",                 // short text shown in the red badge
+    badge: "UofT",                 // fallback text badge if no logo
+    logo: "logo-uoft.webp",        // thumbnail on the card
+    banner: "uoft-engineering-banner.webp",   // banner at the top of the popup
     degree: "BASc, Mechanical Engineering",
     minor: "Minor in Engineering Business",
     year: "Third year",
+    period: "2024 – Present",
     location: "Toronto, ON",
     notes: [
       "The minor lets me pair the technical side of engineering with the business side, which is the same mix behind my internships in manufacturing at Toppan and in treasury at CIMB Niaga."
