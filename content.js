@@ -184,10 +184,14 @@ window.SITE_CONTENT = {
       year: "2025",
       summary: "I designed a working gearbox in SOLIDWORKS, 3D-printed it, assembled it and tested gear engagement, shaft alignment and rotation.",
       cover: "gearbox-cover.webp",
+      heroImage: "gearbox-cover.webp",   // design shown as a short banner at the top of the popup
       video: "https://youtube.com/shorts/u5MWhvxsApc?feature=share",   // functional test run
+      videoBelow: true,                  // show the video under the text instead of in the banner
+      videoLabel: "Design & testing",
+      videoCaption: "Up top is the gearbox as I designed it in SOLIDWORKS. Below is the 3D-printed version I built, running through one of my tests.",
       description: [
-        "I designed a functional gearbox in SOLIDWORKS, including the gears, shafts and supporting housing, and produced detailed engineering drawings for the parts and assembly.",
-        "I 3D-printed the components, assembled the physical prototype and ran functional tests to check gear engagement, shaft alignment and smooth rotation. The video above shows one of those test runs."
+        "I designed this gearbox from scratch in SOLIDWORKS: the gears, the shafts and the housing that holds it all together, along with engineering drawings for each part.",
+        "Then I 3D-printed every piece, assembled it, and put it through a few tests to make sure the gears meshed properly, the shafts stayed lined up and everything turned smoothly."
       ],
       tags: ["SOLIDWORKS", "Engineering Drawing", "Mechanical Design", "3D Printing", "Prototyping", "Assembly", "Functional Testing"],
       links: []
