@@ -19,8 +19,8 @@ window.SITE_CONTENT = {
   profile: {
     name: "Jefferson Evans Manadi",
     initials: "J",                 // shown in the logo + photo placeholder
-    role: "Mechanical Engineer",
-    tagline: "I build things that feel effortless — from the systems underneath to the surface you touch. Curious by default, happiest when learning something new.",
+    role: "Mechanical Engineering Student",
+    tagline: "Third-year Mechanical Engineering student at the University of Toronto. I love learning something new, from designing machines to understanding how markets move.",
     location: "Toronto, ON",
     email: "jeffersonevansm@gmail.com",
 
@@ -40,11 +40,27 @@ window.SITE_CONTENT = {
   about: {
     heading: "Exploring Beyond Boundaries.",
     paragraphs: [
-      "My academic foundation is in Mechanical Engineering, but my curiosity extends beyond engineering into finance and business. Through internships in both the manufacturing and banking industries, I've developed a passion for solving problems from both technical and commercial perspectives. From optimizing production processes in a flexible packaging factory to learning about financial services and treasury operations at CIMB Niaga, I enjoy exploring how different industries create value and drive innovation.",
+      "My academic foundation is in Mechanical Engineering, but my curiosity extends beyond engineering into finance and business. Through internships in both the manufacturing and banking industries, I've developed a passion for solving problems from both technical and commercial perspectives. From analyzing cooling-system energy efficiency at a flexible packaging plant to supporting treasury sales at CIMB Niaga, I enjoy exploring how different industries create value and drive innovation.",
       "What drives me is curiosity. I'd rather take on an unfamiliar problem and learn my way through it than repeat something I've already solved."
     ],
     focus: ["Mechatronics & Robotics", "Manufacturing", "Global Markets"],
     tools: ["SOLIDWORKS", "Ansys Benchmark", "MATLAB", "Excel", "Python"]
+  },
+
+  /* ============================================================
+     MY BACKGROUND (education) → shown in its own section and used
+     by the Portfolio Guider assistant.
+     ============================================================ */
+  education: {
+    school: "University of Toronto",
+    badge: "UofT",                 // short text shown in the red badge
+    degree: "BASc, Mechanical Engineering",
+    minor: "Minor in Engineering Business",
+    year: "Third year",
+    location: "Toronto, ON",
+    notes: [
+      "The minor lets me pair the technical side of engineering with the business side, which is the same mix behind my internships in manufacturing at Toppan and in treasury at CIMB Niaga."
+    ]
   },
 
   /* ============================================================

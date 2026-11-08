@@ -197,6 +197,24 @@
       }
     });
 
+    /* --- education / my background --- */
+    const edu = C.education;
+    if (edu && edu.school) {
+      add({
+        type: 'education',
+        title: 'Education',
+        label: 'My background',
+        href: '#background',
+        body: [edu.school, edu.degree, edu.minor, edu.year, (edu.notes || []).join(' ')].filter(Boolean).join('. '),
+        keywords: ['education', 'degree', 'university', 'school', 'study', 'studies', 'student', 'major', 'minor',
+          'year', 'background', 'uoft', 'toronto', 'academic', 'business', 'mechanical', 'engineering'],
+        answer: {
+          lead: `${P.name} studies at ${edu.school}.`,
+          paras: [[edu.degree, edu.minor, edu.year].filter(Boolean).join(' · ')].concat(edu.notes || [])
+        }
+      });
+    }
+
     /* --- focus areas --- */
     if ((about.focus || []).length) {
       add({
