@@ -89,29 +89,30 @@
   <img class="cover" src="robotic-arm-cover.png" alt="Robotic arm CAD render">
 
   <h2>The brief</h2>
-  <p>I designed this arm for a client who wanted smooth, sweeping camera moves on a hobbyist budget. Track dollies and Steadicam rigs cost $100K&ndash;$500K+, are heavy, and need several operators, so I set out to give a lightweight camera large, repeatable moves at a fraction of that cost.</p>
+  <p>Our MIE243 team wanted to design a six-axis camera arm for beginner filmmakers. We set a target payload of 1.5&nbsp;kg and wanted to keep the cost down.</p>
 
   <div class="callout">
-    <div class="label">What the client asked for</div>
-    <p>A low-cost, long-reach robot arm that lets a lightweight camera be moved smoothly through large, repeatable sweeps &mdash; sized and priced for an advanced hobbyist or beginner professional, not a studio budget.</p>
+    <div class="label">The question</div>
+    <p>Could we move a camera through six axes on a beginner&rsquo;s budget?</p>
   </div>
 
-  <h2>Research &amp; specification</h2>
-  <p>I started by surveying commercial and open-source/hobby arm designs, benchmarking reach, payload, and cost against what the DIY community was already building. Most industrial arms are optimized for manufacturing &mdash; short reach relative to footprint, brute-force motors, high cost &mdash; so a direct copy wasn't going to work. That research set the engineering specification the rest of the design was checked against:</p>
+  <h2>Design targets &amp; estimates</h2>
+  <p>These are the targets and estimates from our final design. This was a class design project, not a built or tested camera rig.</p>
 
   <div class="spec-grid">
-    <div class="spec"><div class="k">Reach</div><div class="v">Long</div></div>
-    <div class="spec"><div class="k">Payload</div><div class="v">Lightweight camera</div></div>
-    <div class="spec"><div class="k">Budget</div><div class="v">Hobbyist-friendly</div></div>
-    <div class="spec"><div class="k">Motion</div><div class="v">Smooth, repeatable</div></div>
+    <div class="spec"><div class="k">Axes</div><div class="v">Six</div></div>
+    <div class="spec"><div class="k">Max reach</div><div class="v">1.2 m</div></div>
+    <div class="spec"><div class="k">Target payload</div><div class="v">1.5 kg</div></div>
+    <div class="spec"><div class="k">Est. cost</div><div class="v">CAD 814</div></div>
   </div>
 
-  <h2>Design process</h2>
-  <p>From the specification, I developed and compared several candidate arm geometries and joint configurations &mdash; different degrees-of-freedom layouts, different structural approaches &mdash; before converging on a final design. Early candidates were deliberately divergent to explore the solution space; later iterations narrowed in on the combination of reach, motion smoothness, and cost that best matched the brief.</p>
-  <p>Where possible I specified standardized structural extrusion and hobby-grade motors to keep the bill of materials low and serviceable with common replacement parts. Custom 3D-printed and CNC parts were reserved for the joints, where fit and function mattered most and off-the-shelf options fell short.</p>
+  <h2>My contribution</h2>
+  <p>When we compared concepts, I kept coming back to the shoulder and elbow. Those joints had to lift the camera and parts of the arm, and I expected a direct-drive design to need higher-torque motors.</p>
+  <p>I brought a lead-screw linkage to the team and led the push to use it at those two joints. The screw moves a sliding block that pivots the joint. I was willing to give up some speed to get more mechanical advantage where the arm needed it.</p>
+  <p>At the wrist, we used timing-belt reductions. The belts were easier to route and package for continuous wrist rotation.</p>
 
   <h2>Engineering drawings</h2>
-  <p>I documented the design in a six-sheet SOLIDWORKS drawing package. The wrist uses three NEMA 17 stepper motors driving belts and pulleys, supported by ball and thrust bearings, with the structure in aluminum and PLA. Click a drawing to open it full size.</p>
+  <p>These drawings from our SOLIDWORKS package show how the mechanisms fit together, including the belt-and-pulley wrist. Click a drawing to open it full size.</p>
   <div class="drawings">
     <figure>
       <a href="robotic-arm-right-view.webp" target="_blank" rel="noopener"><img src="robotic-arm-right-view.webp" alt="Right view of the robotic arm assembly with key dimensions" loading="lazy"></a>
@@ -124,7 +125,7 @@
   </div>
 
   <h2>Outcome</h2>
-  <p>I delivered a full CAD assembly, the engineering drawing package, a parts list built on standard components, and calculations showing the design meets the client's reach, payload and cost targets, ready to move into prototyping.</p>
+  <p>The final design had six axes and a maximum reach of 1.2&nbsp;m. We estimated CAD&nbsp;814 for the design before electronics.</p>
 
   <div class="tags">
     <span class="tag">SOLIDWORKS</span>

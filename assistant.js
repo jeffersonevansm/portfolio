@@ -68,12 +68,13 @@
     make: 'makes', want: 'wants', think: 'thinks', believe: 'believes', know: 'knows',
     have: 'has', am: 'is', do: 'does', go: 'goes', try: 'tries', study: 'studies',
     treat: 'treats', take: 'takes', learn: 'learns', solve: 'solves', run: 'runs',
-    keep: 'keeps', find: 'finds', see: 'sees', get: 'gets', bring: 'brings', aim: 'aims'
+    keep: 'keeps', find: 'finds', see: 'sees', get: 'gets', bring: 'brings', aim: 'aims',
+    look: 'looks', pay: 'pays', draft: 'drafts', print: 'prints', follow: 'follows'
   };
 
   function deVoice(text, name) {
     if (!text) return text;
-    let s = String(text);
+    let s = String(text).replace(/\u2019/g, "'");   // treat curly apostrophes like straight ones
     const He = 'He', he = 'he';
     // Contractions first
     s = s.replace(/\bI've\b/g, 'he has').replace(/\bI'm\b/g, 'he is')
@@ -89,6 +90,11 @@
     s = s.replace(/\bmy\b/g, 'his').replace(/\bMy\b/g, 'His')
          .replace(/\bmine\b/g, 'his').replace(/\bmyself\b/g, 'himself')
          .replace(/\bme\b/g, 'him');
+    // Team voice: "we/our/us" in project write-ups means Jefferson's team
+    s = s.replace(/\bwe\b/g, 'the team').replace(/\bWe\b/g, 'The team')
+         .replace(/\b([Oo])ur ((?:[A-Za-z0-9]+ )?team)\b/g, (m, o, rest) => (o === 'O' ? 'His ' : 'his ') + rest)
+         .replace(/\bour\b/g, "his team's").replace(/\bOur\b/g, "His team's")
+         .replace(/\bus\b/g, 'the team');
     // Re-capitalise sentence starts (not after em-dashes — those stay mid-sentence)
     s = s.replace(/(^|[.!?]\s+)([a-z])/g, (m, pre, ch) => pre + ch.toUpperCase());
     // "He" at the very start of a standalone quote reads better as the name
@@ -96,7 +102,7 @@
     return s;
   }
 
-  function isFirstPerson(t) { return /\b(I|I've|I'm|I'd|my|My|me|mine|myself)\b/.test(String(t || '')); }
+  function isFirstPerson(t) { return /\b(I|I've|I'm|I'd|my|My|me|mine|myself|we|We|our|Our)\b/.test(String(t || '')); }
 
   function tokenize(text) {
     return String(text || '')
@@ -534,6 +540,14 @@
     }
 
     const docOfType = t => kb.docs.find(d => d.type === t);
+    // Does the question name this project / employer? ("gearbox", "toppan", "utwind"…)
+    const ql = ' ' + String(query || '').toLowerCase().replace(/[^a-z0-9 ]/g, ' ') + ' ';
+    const names = d => {
+      const src = d.type === 'experience' ? ((kb.raw.experience || [])[d.index] || {}).org : d.title;
+      return String(src || '').toLowerCase().split(/[^a-z0-9]+/)
+        .filter(w => w.length > 3 && !['plasindo', 'lestari', 'prototype', 'niaga'].includes(w));
+    };
+    const isNamed = d => names(d).some(w => ql.includes(' ' + w + ' ') || ql.includes(' ' + w + 's '));
 
     switch (intent) {
       case 'greeting':
@@ -552,7 +566,8 @@
         // "Tell me about the Robotic Arm" is about a PROJECT, not the bio.
         // If the question names a specific entity, answer with that instead.
         const named = hits.find(h =>
-          (h.doc.type === 'project' || h.doc.type === 'experience') && h.score > 6);
+          (h.doc.type === 'project' || h.doc.type === 'experience') && (h.score > 6 || isNamed(h.doc))) ||
+          kb.docs.filter(d => (d.type === 'project' || d.type === 'experience') && isNamed(d)).map(d => ({ doc: d }))[0];
         if (named) {
           fromAnswer(named.doc);
           break;
@@ -601,7 +616,8 @@
       }
 
       case 'experience': {
-        const specific = hits.find(h => h.doc.type === 'experience' && h.score > 3);
+        const specific = hits.find(h => h.doc.type === 'experience' && isNamed(h.doc)) ||
+          kb.docs.filter(d => d.type === 'experience' && isNamed(d)).map(d => ({ doc: d }))[0];
         if (specific) {
           fromAnswer(specific.doc);
           const other = kb.docs.filter(d => d.type === 'experience' && d !== specific.doc);
@@ -836,8 +852,13 @@
     function resolveQuery(q) {
       let out = String(q || '').trim();
       const hasPronoun = /\b(it|its|it's|that|this|the project|the same|there)\b/i.test(out);
+      const lo = ' ' + out.toLowerCase().replace(/[^a-z0-9 ]/g, ' ') + ' ';
+      const GENERIC = /^(intern|internship|engineering|member|team|analyst|prototype|maintenance|capital|markets|treasury|niaga|plasindo|lestari)$/;
       const namesSomething = kb.docs.some(d =>
-        d.title && d.title.length > 3 && out.toLowerCase().includes(d.title.toLowerCase()));
+        (d.title && d.title.length > 3 && out.toLowerCase().includes(d.title.toLowerCase())) ||
+        ((d.type === 'project' || d.type === 'experience') &&
+          String(d.type === 'experience' ? ((kb.raw.experience || [])[d.index] || {}).org : d.title).toLowerCase()
+            .split(/[^a-z0-9]+/).some(w => w.length > 3 && !GENERIC.test(w) && lo.includes(' ' + w + ' '))));
       if (hasPronoun && !namesSomething && memory.lastTopic) {
         out = out.replace(/\b(it|its|it's|that|this|the project|the same)\b/gi, memory.lastTopic.title);
       }

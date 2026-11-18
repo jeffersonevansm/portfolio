@@ -20,7 +20,7 @@ window.SITE_CONTENT = {
     name: "Jefferson Evans Manadi",
     initials: "J",                 // shown in the logo + photo placeholder
     role: "Mechanical Engineering Student",
-    tagline: "Third-year Mechanical Engineering student at the University of Toronto. I love learning something new, from designing machines to understanding how markets move.",
+    tagline: "I’m a third-year mechanical engineering student at the University of Toronto. I like getting hands-on with problems I’m still figuring out, whether that means printing a gearbox or building a better way to follow currency markets.",
     location: "Toronto, ON",
     email: "jeffersonevansm@gmail.com",
 
@@ -38,10 +38,10 @@ window.SITE_CONTENT = {
   },
 
   about: {
-    heading: "Exploring Beyond Boundaries.",
+    heading: "What I like to figure out",
     paragraphs: [
-      "My academic foundation is in Mechanical Engineering, but my curiosity extends beyond engineering into finance and business. Through internships in both the manufacturing and banking industries, I've developed a passion for solving problems from both technical and commercial perspectives. From analyzing cooling-system energy efficiency at a flexible packaging plant to supporting treasury sales at CIMB Niaga, I enjoy exploring how different industries create value and drive innovation.",
-      "What drives me is curiosity. I'd rather take on an unfamiliar problem and learn my way through it than repeat something I've already solved."
+      "At a packaging plant, I looked at what would happen if a production line switched to a closed-loop cooling system. At a treasury desk, I built a dashboard to make it easier to follow currency moves month by month.",
+      "The mechanical projects here show another side of how I work. On our camera arm, I looked for a way to get more torque from smaller motors. On our gearbox, the first print jammed, so I went back to the parts that had to fit together."
     ],
     focus: ["Mechatronics & Robotics", "Manufacturing", "Global Markets"],
     tools: ["SOLIDWORKS", "Ansys Benchmark", "MATLAB", "Excel", "Python"]
@@ -78,11 +78,8 @@ window.SITE_CONTENT = {
       type: "Banking / Treasury Sales",
       period: "Jun – Sep 2026",
       location: "",
-      summary: "Supported Treasury Sales operations through financial market research, foreign exchange analysis, and competitor benchmarking.",
-      highlights: [
-        "Developed an interactive FX tracking dashboard using Python and Streamlit to visualize currency market movements and support data-driven analysis — the prototype that grew into Forex Analyst.",
-        "Conducted comparative research on banking products, treasury services, and pricing structures to identify market opportunities."
-      ],
+      summary: "I built an FX dashboard to follow currency movements month by month. I also compared how banks priced and positioned their treasury products.",
+      highlights: [],
       skills: ["Python", "Streamlit", "Microsoft Excel", "Financial Analysis", "Data Visualization", "Market Research"],
       project: "Forex Analyst"       // links this role to a project card (use the exact project title)
     },
@@ -93,11 +90,8 @@ window.SITE_CONTENT = {
       type: "Student Design Team",
       period: "Jan – May 2026",
       location: "",
-      summary: "Member of the drivetrain team, contributing CAD models of mechanical drivetrain components.",
-      highlights: [
-        "Modeled mechanical drivetrain components in CAD.",
-        "Collaborated with teammates across the design process."
-      ],
+      summary: "I worked with the drivetrain team on CAD models for the mechanical components and helped put together the bill of materials.",
+      highlights: [],
       skills: ["CAD Modeling", "Mechanical Components", "Engineering Collaboration"]
     },
     {
@@ -107,11 +101,8 @@ window.SITE_CONTENT = {
       type: "Flexible Packaging Manufacturing",
       period: "Jun – Aug 2025",
       location: "",
-      summary: "Analyzed industrial cooling system performance and energy efficiency in a flexible packaging manufacturing facility.",
-      highlights: [
-        "Evaluated open-loop and closed-loop cooling configurations, collected operational data, and assessed system performance improvements.",
-        "Reviewed and interpreted AutoCAD piping layouts and technical drawings to understand cooling system configurations, component arrangements, and industrial piping networks."
-      ],
+      summary: "I compared open- and closed-loop cooling for a blown-film line. I used operating data and piping layouts to assess how the change could affect energy use and whether it could pay for itself.",
+      highlights: [],
       skills: ["Technical Drawing Interpretation", "Industrial Cooling Systems", "Energy Efficiency Analysis", "Data Analysis", "Microsoft Excel", "AutoCAD"],
       images: ["toppan-cooling-pid.webp", "toppan-cooling-layout.webp"]
     }
@@ -147,14 +138,13 @@ window.SITE_CONTENT = {
       title: "Robotic Arm",
       category: "Mechanical",
       year: "2026",
-      summary: "I designed a low-cost, long-reach robotic arm that gives beginner cinematographers smooth, repeatable camera moves without a $100K+ rig.",
+      summary: "Could we move a camera through six axes on a beginner’s budget? I proposed using lead-screw linkages at the two joints that had the most to lift.",
       cover: "robotic-arm-cover.png",
       images: ["robotic-arm-right-view.webp", "robotic-arm-exploded-wrist.webp"],
       description: [
-        "I designed a camera arm for a client who wanted sweeping, cinematic shots on a hobbyist budget, where professional dollies and Steadicam rigs cost $100K or more.",
-        "I benchmarked commercial and open-source arms to set a spec for reach, payload, degrees of freedom and cost, then compared several arm geometries and joint layouts before settling on the final design.",
-        "To keep it affordable I built the structure from standard aluminum extrusion and drove the wrist with NEMA 17 stepper motors through belts and pulleys, using custom 3D-printed (PLA) parts only where fit mattered most.",
-        "I delivered the full SOLIDWORKS assembly, a six-sheet engineering drawing package (including the arm assembly and an exploded wrist with its bill of materials), and calculations showing the design meets the client's targets."
+        "Our MIE243 team wanted to design a six-axis camera arm for beginner filmmakers. We set a target payload of 1.5 kg and wanted to keep the cost down. When we compared concepts, I kept coming back to the shoulder and elbow. Those joints had to lift the camera and parts of the arm, and I expected a direct-drive design to need higher-torque motors.",
+        "I brought a lead-screw linkage to the team and led the push to use it at those two joints. The screw moves a sliding block that pivots the joint. I was willing to give up some speed to get more mechanical advantage where the arm needed it. At the wrist, we used timing-belt reductions. The belts were easier to route and package for continuous wrist rotation.",
+        "The final design had six axes and a maximum reach of 1.2 m. We estimated CAD 814 for the design before electronics. The existing drawings show how the mechanisms fit together."
       ],
       tags: ["SOLIDWORKS", "Mechanical Design", "Robotics"],
       links: [
@@ -167,11 +157,11 @@ window.SITE_CONTENT = {
       year: "2026",
       logo: "FA-Logo-crop.png",
       backdrop: "FA-Preview.jpeg",
-      summary: "I built a serverless FX research platform that computes live market analytics at the edge and publishes AI-written monthly reports at zero marginal cost.",
+      summary: "I started with a dashboard for tracking currencies at CIMB Niaga, then rebuilt it for the web so I could share the tracker and its monthly reports.",
       description: [
-        "I built ForexAnalyst (forexanalyst.org) to publish institutional-style monthly research on six currency pairs: price action, technical indicators, macro drivers and a forward outlook.",
-        "I run the whole platform on a single Cloudflare Worker. It pulls daily OHLC data from Yahoo Finance, computes RSI, MACD, moving averages, market structure and pivot levels server-side, and renders interactive charts in the browser. I generate each month's research notes once with Claude using web-verified event data and store them in Cloudflare KV, so readers never trigger per-request AI costs.",
-        "It started as a Streamlit FX dashboard during my CIMB Niaga internship. I rebuilt it as a dependency-free vanilla JS site with its own design system, deployed from GitHub to Cloudflare on a custom domain."
+        "Forex Analyst started as a Streamlit dashboard I built during my treasury internship at CIMB Niaga. I wanted a clearer way to see how currencies had moved over the month. I later moved it to Cloudflare and added monthly market write-ups.",
+        "The site runs on a single Cloudflare Worker. It pulls daily OHLC data from Yahoo Finance, computes RSI, MACD, moving averages, market structure and pivot levels server-side, and renders interactive charts in the browser. I draft each month's write-up with Claude's help, using web-verified event data. The finished editions are stored in Cloudflare KV and served as static pages instead of being generated on every visit.",
+        "For the web version I rebuilt the front end as a dependency-free vanilla JS site with its own design system, deployed from GitHub to Cloudflare on a custom domain."
       ],
       tags: ["JavaScript", "Cloudflare Workers", "KV", "Chart.js", "Claude API", "Serverless"],
       links: [
@@ -182,16 +172,16 @@ window.SITE_CONTENT = {
       title: "Gearbox Prototype",
       category: "Mechanical",
       year: "2025",
-      summary: "I designed a working gearbox in SOLIDWORKS, 3D-printed it, assembled it and tested gear engagement, shaft alignment and rotation.",
+      summary: "I wanted a 15:1 gearbox that snapped together like LEGO. The first print jammed, so I went back to the clearances and how I printed the shaft.",
       cover: "gearbox-cover.webp",
       heroImage: "gearbox-cover.webp",   // design shown as a short banner at the top of the popup
       video: "https://youtube.com/shorts/u5MWhvxsApc?feature=share",   // functional test run
       videoBelow: true,                  // show the video under the text instead of in the banner
       videoLabel: "Design & testing",
-      videoCaption: "Up top is the gearbox as I designed it in SOLIDWORKS. Below is the 3D-printed version I built, running through one of my tests.",
       description: [
-        "I designed this gearbox from scratch in SOLIDWORKS: the gears, the shafts and the housing that holds it all together, along with engineering drawings for each part.",
-        "Then I 3D-printed every piece, assembled it, and put it through a few tests to make sure the gears meshed properly, the shafts stayed lined up and everything turned smoothly."
+        "I liked how LEGO pieces click together, and I wanted our gearbox to feel that easy to assemble. Our design used two stages of helical gears to get a 15:1 speed reduction.",
+        "The first print jammed when I tried to turn it. I had left too little clearance for the gears, and the way I oriented the shaft on the print bed left it slightly out of round. I opened up the clearances in the redesign and got the next version assembled and turning.",
+        "That first print changed what I pay attention to before printing a mechanism. Now I look more closely at the surfaces that have to fit or move against each other, and at how print orientation might affect them. The video below shows the revised gearbox running."
       ],
       tags: ["SOLIDWORKS", "Engineering Drawing", "Mechanical Design", "3D Printing", "Prototyping", "Assembly", "Functional Testing"],
       links: []
