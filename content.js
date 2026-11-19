@@ -41,7 +41,8 @@ window.SITE_CONTENT = {
     heading: "What I like to figure out",
     paragraphs: [
       "At a packaging plant, I looked at what would happen if a production line switched to a closed-loop cooling system. At a treasury desk, I built a dashboard to make it easier to follow currency moves month by month.",
-      "The mechanical projects here show another side of how I work. On our camera arm, I looked for a way to get more torque from smaller motors. On our gearbox, the first print jammed, so I went back to the parts that had to fit together."
+      "The mechanical projects here show another side of how I work. On our camera arm, I looked for a way to get more torque from smaller motors. On our gearbox, the first print jammed, so I went back to the parts that had to fit together.",
+      "One of my favourite moments at CIMB Niaga was realizing that the coding I’d learned in school could make a recurring task easier for my coworkers. That’s part of why I want to be an engineer. When I run into a problem, I like figuring out what I already know, what I still need to learn, and what I can build with both."
     ],
     focus: ["Mechatronics & Robotics", "Manufacturing", "Global Markets"],
     tools: ["SOLIDWORKS", "Ansys Benchmark", "MATLAB", "Excel", "Python"]
@@ -157,11 +158,13 @@ window.SITE_CONTENT = {
       year: "2026",
       logo: "FA-Logo-crop.png",
       backdrop: "FA-Preview.jpeg",
-      summary: "I started with a dashboard for tracking currencies at CIMB Niaga, then rebuilt it for the web so I could share the tracker and its monthly reports.",
+      summary: "I built Forex Analyst during my internship at CIMB Niaga after a coworker asked me to explain what moved five currency pairs. The site brings exchange rates, market news, and monthly reports together.",
       description: [
-        "Forex Analyst started as a Streamlit dashboard I built during my treasury internship at CIMB Niaga. I wanted a clearer way to see how currencies had moved over the month. I later moved it to Cloudflare and added monthly market write-ups.",
+        "In my first few weeks at CIMB Niaga, a coworker asked me to look at five currency pairs and explain what had moved them the previous month. I went through the economic calendar, read the CPI releases and other market news, and checked how each pair moved around those events.",
+        "A few weeks later, the same coworker asked me to do another review. This time, they also wanted me to pick out the stories that mattered most and write a short market update. I found myself opening the same calendars, charts, and news sources again. I wondered if I could put them all in one place.",
+        "I used what I’d learned about coding in high school and university to build Forex Analyst. The site brings exchange rates, charts, and market news together so my coworkers can check a currency pair and pull up its monthly report in one place.",
         "The site runs on a single Cloudflare Worker. It pulls daily OHLC data from Yahoo Finance, computes RSI, MACD, moving averages, market structure and pivot levels server-side, and renders interactive charts in the browser. I draft each month's write-up with Claude's help, using web-verified event data. The finished editions are stored in Cloudflare KV and served as static pages instead of being generated on every visit.",
-        "For the web version I rebuilt the front end as a dependency-free vanilla JS site with its own design system, deployed from GitHub to Cloudflare on a custom domain."
+        "The first version was a Streamlit dashboard. For the web version I rebuilt the front end as a dependency-free vanilla JS site with its own design system, deployed from GitHub to Cloudflare on a custom domain."
       ],
       tags: ["JavaScript", "Cloudflare Workers", "KV", "Chart.js", "Claude API", "Serverless"],
       links: [

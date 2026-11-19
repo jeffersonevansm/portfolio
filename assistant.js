@@ -69,7 +69,8 @@
     have: 'has', am: 'is', do: 'does', go: 'goes', try: 'tries', study: 'studies',
     treat: 'treats', take: 'takes', learn: 'learns', solve: 'solves', run: 'runs',
     keep: 'keeps', find: 'finds', see: 'sees', get: 'gets', bring: 'brings', aim: 'aims',
-    look: 'looks', pay: 'pays', draft: 'drafts', print: 'prints', follow: 'follows'
+    look: 'looks', pay: 'pays', draft: 'drafts', print: 'prints', follow: 'follows',
+    know: 'knows', need: 'needs'
   };
 
   function deVoice(text, name) {
@@ -80,10 +81,11 @@
     s = s.replace(/\bI've\b/g, 'he has').replace(/\bI'm\b/g, 'he is')
          .replace(/\bI'd\b/g, "he'd").replace(/\bI'll\b/g, 'he will');
     // Bare "I" + optional verb
-    s = s.replace(/\bI\b(\s+)([a-z]+)?/g, (m, sp, verb) => {
-      if (!verb) return he;
-      if (/ed$/.test(verb) || PRESENT[verb] === undefined && /ing$/.test(verb)) return he + sp + verb;
-      return he + sp + (PRESENT[verb] || verb);
+    s = s.replace(/\bI\b(\s+)((?:already|still|also|really|just|often|usually) )?([a-z]+)?/g, (m, sp, adv, verb) => {
+      adv = adv || '';
+      if (!verb) return he + sp + adv;
+      if (PRESENT[verb] === undefined && /ed$/.test(verb) || PRESENT[verb] === undefined && /ing$/.test(verb)) return he + sp + adv + verb;
+      return he + sp + adv + (PRESENT[verb] || verb);
     });
     s = s.replace(/\bI\b/g, he);
     // Possessives / objects
