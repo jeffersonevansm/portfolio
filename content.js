@@ -158,7 +158,7 @@ window.SITE_CONTENT = {
       year: "2026",
       logo: "FA-Logo-crop.png",
       backdrop: "FA-Preview.jpeg",
-      summary: "I built Forex Analyst during my internship at CIMB Niaga after a coworker asked me to explain what moved five currency pairs. The site brings exchange rates, market news, and monthly reports together.",
+      summary: "I built Forex Analyst at CIMB Niaga to make monthly FX research easier.",
       description: [
         "In my first few weeks at CIMB Niaga, a coworker asked me to look at five currency pairs and explain what had moved them the previous month. I went through the economic calendar, read the CPI releases and other market news, and checked how each pair moved around those events.",
         "A few weeks later, the same coworker asked me to do another review. This time, they also wanted me to pick out the stories that mattered most and write a short market update. I found myself opening the same calendars, charts, and news sources again. I wondered if I could put them all in one place.",
