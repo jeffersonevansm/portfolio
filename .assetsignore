@@ -1,0 +1,9 @@
+# Files in the repo that must NOT be served as part of the website
+worker
+wrangler.jsonc
+.assetsignore
+.git
+.github
+.wrangler
+node_modules
+.dev.vars*

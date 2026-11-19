@@ -1,0 +1,13 @@
+// Cloudflare Worker config for jeffersonem.com (deployed by Workers Builds on every push to main).
+{
+  "name": "portfolio",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+  // Keep the variables you set in the Cloudflare dashboard (ACCESS_AUD, ADMIN_EMAILS, ...).
+  "keep_vars": true
+}
