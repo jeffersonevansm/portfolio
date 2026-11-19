@@ -11,32 +11,21 @@
    ============================================================ */
 
 window.SITE_CONTENT = {
-
-  // Your one bold colour (anything you like). Examples:
-  // "#2440FF" blue · "#FF2E63" pink · "#FF3D00" orange · "#7C3AED" violet · "#0FA958" green
   accentColor: "#2440FF",
-
   profile: {
     name: "Jefferson Evans Manadi",
-    initials: "J",                 // shown in the logo + photo placeholder
+    initials: "J",
     role: "Mechanical Engineering Student",
     tagline: "I’m a third-year mechanical engineering student at the University of Toronto. I like getting hands-on with problems I’m still figuring out, whether that means printing a gearbox or building a better way to follow currency markets.",
     location: "Toronto, ON",
     email: "jeffersonevansm@gmail.com",
-
-    // YOUR PHOTOS — the brush reveals photo2 from under photo1.
-    // Put your image files in the SAME folder as these two files,
-    // then write the file names here. Leave "" to use placeholders.
-    photo:       "me.jpg",   // e.g. "me-1.jpg"  (the cover photo)
-    photoReveal: ""    // e.g. "me-2.jpg"  (revealed as you brush over it)
+    photo: "me.jpg",
+    photoReveal: ""
   },
-
-  // The big "hello" you see when the site first loads
   intro: {
     hello: "Hello",
     sub: "Welcome"
   },
-
   about: {
     heading: "What I like to figure out",
     paragraphs: [
@@ -47,16 +36,11 @@ window.SITE_CONTENT = {
     focus: ["Mechatronics & Robotics", "Manufacturing", "Global Markets"],
     tools: ["SOLIDWORKS", "Ansys Benchmark", "MATLAB", "Excel", "Python"]
   },
-
-  /* ============================================================
-     MY BACKGROUND (education) → shown in its own section and used
-     by the Portfolio Guider assistant.
-     ============================================================ */
   education: {
     school: "University of Toronto",
-    badge: "UofT",                 // fallback text badge if no logo
-    logo: "logo-uoft.webp",        // thumbnail on the card
-    banner: "uoft-engineering-banner.webp",   // banner at the top of the popup
+    badge: "UofT",
+    logo: "logo-uoft.webp",
+    banner: "uoft-engineering-banner.webp",
     degree: "BASc, Mechanical Engineering",
     minor: "Minor in Engineering Business",
     year: "Third year",
@@ -66,11 +50,6 @@ window.SITE_CONTENT = {
       "The minor lets me pair the technical side of engineering with the business side, which is the same mix behind my internships in manufacturing at Toppan and in treasury at CIMB Niaga."
     ]
   },
-
-  /* ============================================================
-     WORK EXPERIENCE  →  used by the site AND by the Portfolio Guider assistant.
-     Copy a { ... } block to add another role. Put a comma after it.
-     ============================================================ */
   experience: [
     {
       role: "Treasury & Capital Markets Intern",
@@ -82,7 +61,7 @@ window.SITE_CONTENT = {
       summary: "I built an FX dashboard to follow currency movements month by month. I also compared how banks priced and positioned their treasury products.",
       highlights: [],
       skills: ["Python", "Streamlit", "Microsoft Excel", "Financial Analysis", "Data Visualization", "Market Research"],
-      project: "Forex Analyst"       // links this role to a project card (use the exact project title)
+      project: "Forex Analyst"
     },
     {
       role: "Drivetrain Team Member",
@@ -104,36 +83,46 @@ window.SITE_CONTENT = {
       location: "",
       summary: "I compared open- and closed-loop cooling for a blown-film line. I used operating data and piping layouts to assess how the change could affect energy use and whether it could pay for itself.",
       highlights: [],
-      skills: ["Technical Drawing Interpretation", "Industrial Cooling Systems", "Energy Efficiency Analysis", "Data Analysis", "Microsoft Excel", "AutoCAD"],
+      skills: [
+        "Technical Drawing Interpretation",
+        "Industrial Cooling Systems",
+        "Energy Efficiency Analysis",
+        "Data Analysis",
+        "Microsoft Excel",
+        "AutoCAD"
+      ],
       images: ["toppan-cooling-pid.webp", "toppan-cooling-layout.webp"]
     }
   ],
-
-  /* Skills grouped by category — the assistant uses these to answer
-     "does he know X?" and "what languages does he use?" */
   skills: {
-    "Engineering & CAD": ["SOLIDWORKS", "Ansys", "Mechanical Design", "GD&T", "3D Printing", "CNC"],
-    "Programming": ["Python", "JavaScript", "MATLAB"],
+    "Engineering & CAD": [
+      "SOLIDWORKS",
+      "Ansys",
+      "Mechanical Design",
+      "3D Printing",
+      "CNC",
+      "AutoCAD",
+      "HVAC Systems",
+      "Energy Efficiency Analysis",
+      "Engineering Drawing"
+    ],
+    Programming: ["Python", "JavaScript", "MATLAB"],
     "Web & Cloud": ["Cloudflare Workers", "Cloudflare KV", "Serverless", "Chart.js", "Claude API", "Streamlit", "GitHub CI/CD"],
-    "Finance & Business": ["Treasury Operations", "Financial Services", "Technical Analysis", "Excel", "Financial Analysis", "Market Research"],
-    "Other": ["AutoCAD", "Technical Drawing", "Industrial Cooling Systems", "Energy Efficiency Analysis", "Robotics"]
+    "Finance & Business": [
+      "Treasury Operations",
+      "Financial Services",
+      "Technical Analysis",
+      "Excel",
+      "Financial Analysis",
+      "Market Research",
+      "Foreign Exchange",
+      "Money Market"
+    ]
   },
-
-  /* Resume + profiles. Put your resume PDF in this folder and name it here. */
   resume: {
-    label: "Download resume (PDF)",
-    url: ""                          // e.g. "Jefferson-Evans-Manadi-Resume.pdf"  ← leave "" if you don't have one yet
+    label: "My Resume",
+    url: "https://tinyurl.com/Jeffersonemportfolio"
   },
-
-  // YOUR PROJECTS — drag through them on the site. Copy a block to add more.
-  //
-  // Optional media fields per project:
-  //   cover:  "filename.jpg"  → thumbnail shown on the project card
-  //   logo:   "logo.png"      → project logo, shown on the card + popup (transparent PNG works best)
-  //   backdrop: "preview.jpg" → screenshot shown dimmed behind the logo (card) and at the top of the popup
-  //   video:  a YouTube link, a Vimeo link, or a local file like "demo.mp4"
-  //   images: ["shot1.jpg", "shot2.jpg"] → gallery shown inside the project popup
-  // Local files (images/video) go in the SAME folder as content.js.
   projects: [
     {
       title: "Robotic Arm",
@@ -177,34 +166,33 @@ window.SITE_CONTENT = {
       year: "2025",
       summary: "I wanted a 15:1 gearbox that snapped together like LEGO. The first print jammed, so I went back to the clearances and how I printed the shaft.",
       cover: "gearbox-cover.webp",
-      heroImage: "gearbox-cover.webp",   // design shown as a short banner at the top of the popup
-      video: "https://youtube.com/shorts/u5MWhvxsApc?feature=share",   // functional test run
-      videoBelow: true,                  // show the video under the text instead of in the banner
+      heroImage: "gearbox-cover.webp",
+      video: "https://youtube.com/shorts/u5MWhvxsApc?feature=share",
+      videoBelow: true,
       videoLabel: "Design & testing",
       description: [
         "I liked how LEGO pieces click together, and I wanted our gearbox to feel that easy to assemble. Our design used two stages of helical gears to get a 15:1 speed reduction.",
         "The first print jammed when I tried to turn it. I had left too little clearance for the gears, and the way I oriented the shaft on the print bed left it slightly out of round. I opened up the clearances in the redesign and got the next version assembled and turning.",
         "That first print changed what I pay attention to before printing a mechanism. Now I look more closely at the surfaces that have to fit or move against each other, and at how print orientation might affect them. The video below shows the revised gearbox running."
       ],
-      tags: ["SOLIDWORKS", "Engineering Drawing", "Mechanical Design", "3D Printing", "Prototyping", "Assembly", "Functional Testing"],
+      tags: [
+        "SOLIDWORKS",
+        "Engineering Drawing",
+        "Mechanical Design",
+        "3D Printing",
+        "Prototyping",
+        "Assembly",
+        "Functional Testing"
+      ],
       links: []
-    },
-    // 👉 TO ADD A NEW PROJECT: copy the entire { ... } block above (Robotic Arm),
-    // paste it here as a new block, and change the text inside the quotes.
-    // No coding needed — just copy, paste, and edit. Add a comma after each
-    // block except the very last one in the list.
+    }
   ],
-
-  // Footer / contact links. Copy a line to add more (Dribbble, Instagram, etc.)
   links: [
-    { label: "GitHub", url: "https://github.com" },
     { label: "LinkedIn", url: "https://www.linkedin.com/in/jeffersonem/" },
-    { label: "X / Twitter", url: "https://x.com" }
+    { label: "GitHub", url: "https://github.com/jeffersonevansm" }
   ],
-
   contact: {
     heading: "Let's build something.",
     sub: "Open to new opportunities and good collaborations. Email is the fastest way to reach me."
   }
-
 };
